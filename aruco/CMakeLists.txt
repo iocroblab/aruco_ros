@@ -3,7 +3,12 @@ project(aruco)
 
 find_package(catkin)
 find_package(Eigen3 REQUIRED)
-find_package(OpenCV 3.2 REQUIRED)
+find_package(OpenCV REQUIRED)
+
+if(OpenCV_VERSION VERSION_LESS 3.2.0)
+  message(FATAL_ERROR "OpenCV version found is ${OpenCV_VERSION}. Aruco needs at least version 3.2.0")
+endif()
+ 
 set(CMAKE_CXX_STANDARD 11) # C++11...
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
 set(CMAKE_CXX_EXTENSIONS ON) #...with compiler extensions like gnu++11
