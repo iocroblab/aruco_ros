@@ -224,7 +224,7 @@ int main(int argc, char **argv)
 
   dynamic_reconfigure::Server<aruco_ros::ArucoThresholdConfig> server;
   dynamic_reconfigure::Server<aruco_ros::ArucoThresholdConfig>::CallbackType f_;
-  f_ = boost::bind(&reconf_callback, _1, _2);
+  f_ = boost::bind(&reconf_callback, boost::placeholders::_1, boost::placeholders::_2);
   server.setCallback(f_);
 
   normalizeImageIllumination = false;

@@ -152,7 +152,7 @@ public:
     ROS_INFO("ArUco node will publish pose to TF with %s as parent and %s as child.", reference_frame.c_str(),
              marker_frame.c_str());
 
-    dyn_rec_server.setCallback(boost::bind(&ArucoSimple::reconf_callback, this, _1, _2));
+    dyn_rec_server.setCallback(boost::bind(&ArucoSimple::reconf_callback, this, boost::placeholders::_1, boost::placeholders::_2));
   }
 
   bool getTransform(const std::string& refFrame, const std::string& childFrame, tf::StampedTransform& transform)
